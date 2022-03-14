@@ -11,8 +11,13 @@ public class Libretto {
 		this.voti = new ArrayList<Voto>() ;
 	}
 	
-	public void add(Voto v) {
-		this.voti.add(v);
+	public boolean add(Voto v) {
+		if(!isDuplicato(v) && !isConflitto(v)) {
+			this.voti.add(v);
+			return true ;
+		} else {
+			return false ;
+		}
 	}
 	
 	public Libretto filtraPunti(int punti) {
@@ -60,6 +65,39 @@ public class Libretto {
 			return false;
 	}
 	
+	public List<Voto> getVoti() {
+		return this.voti ;
+	}
+	
+	
+	public Libretto votiMigliorati() {
+		Libretto nuovo = new Libretto() ;
+		for(Voto v: this.voti) {
+			int punti = v.getPunti() ;
+			if(punti>=24)
+				punti +=2 ;
+			else 
+				punti++ ;
+			if (punti>30)
+				punti=30 ;
+
+			// NOOOO va a modificare l'oggetto nel libretto originale
+			//			v.setPunti(punti);
+			//			nuovo.add(v) ;
+			
+			nuovo.add(new Voto(v.getNome(), punti)) ;
+		}
+		return nuovo ;
+	}
+	
+	
+	// FUNZIONERÀ COSÌ??? Proviamo... e capiamo perché
+	public void cancellaVotiMinori(int punti) {
+		for(Voto v: this.voti) {
+			if(v.getPunti()<punti)
+				this.voti.remove(v) ;
+		}
+	}
 	
 	public String toString() {
 		return this.voti.toString() ;

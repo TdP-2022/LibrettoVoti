@@ -1,7 +1,5 @@
 package it.polito.tdp.librettovoti.model;
 
-import java.util.Objects;
-
 public class Voto {
 	private String nome ;
 	private int punti ;
