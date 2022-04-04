@@ -25,7 +25,7 @@ public class EntryPoint extends Application {
         Libretto model = new Libretto();
         controller.setModel(model) ;
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Libretto Voti TdP-2022");
         stage.setScene(scene);
         stage.show();
     }
@@ -38,7 +38,7 @@ public class EntryPoint extends Application {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    protected static void main(String[] args) {
         launch(args);
     }
 
